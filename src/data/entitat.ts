@@ -2,7 +2,7 @@
 
 export const entitat = {
   nom: 'Tallerets',
-  nomLegal: '[PENDENT: nom legal de l’associació]',
+  nomLegal: 'Associació Tallerets Comunitat i Creació',
   nif: '[PENDENT: NIF]',
   registre: '[PENDENT: número d’inscripció al Registre d’Entitats]',
   constitucio: '[PENDENT: data de constitució]',
