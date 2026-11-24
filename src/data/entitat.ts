@@ -3,10 +3,10 @@
 export const entitat = {
   nom: 'Tallerets',
   nomLegal: 'Associació Tallerets Comunitat i Creació',
-  nif: '[PENDENT: NIF]',
+  nif: 'G26777029',
   registre: '[PENDENT: número d’inscripció al Registre d’Entitats]',
   constitucio: '[PENDENT: data de constitució]',
-  domicili: '[PENDENT: domicili social], Sants, Barcelona',
+  domicili: 'Carrer Antoni de Capmany, 71, local F, 08028 Barcelona',
   email: 'hola@tallerets.com',
   telefon: '623 951 815',
   instagram: 'https://www.instagram.com/tallerets',
