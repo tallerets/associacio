@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/BaseLayout.astro'
+import ProjecteCard from '../components/ProjecteCard.astro'
+import { entitat, principis, xarxa, impacte } from '../data/entitat'
+import { projectes } from '../data/projectes'
+---
+
+<Layout
+  title="Tallerets, associació · Economia social i solidària a Sants"
+  description="Tallerets és una associació de Sants (Barcelona) que fa servir l'ofici artesà com a eina de transformació social, des de l'economia social i solidària."
+>
+  <!-- Hero -->
+  <section class="page-padding bg-dark text-soft py-20 md:py-28">
+    <p class="font-mono uppercase tracking-wide text-sm mb-6 opacity-80">
+      Associació · Sants, Barcelona
+    </p>
+    <h1
+      class="text-5xl sm:text-6xl lg:text-8xl font-[800] leading-[1.05] max-w-[16ch]"
+    >
+      {entitat.lema}
+    </h1>
+    <div class="flex flex-wrap gap-4 mt-12">
+      <a href="#projectes" class="c-button bg-soft text-dark border-soft">
+        Els nostres projectes
+      </a>
+      <a href="#collabora" class="c-button border-soft text-soft hover:text-soft">
+        Col·labora amb nosaltres
+      </a>
+    </div>
+  </section>
+
+  <!-- Qui som -->
+  <section id="qui-som" class="page-padding mx-auto pt-20 md:pt-28">
+    <h2 class="titol-seccio">
+      Qui som
+      <img width="48" height="48" class="w-12 inline" src="/icons/flor.svg" alt="" />
+    </h2>
+    <div
+      class="flex flex-wrap md:flex-nowrap gap-12 md:gap-28 items-center justify-center"
+    >
+      <img
+        width="320"
+        height="328"
+        class="w-[320px] border-4 border-dark bg-dark rounded"
+        src="/img/noor.png"
+        alt="La Noor a l'espai de Tallerets"
+      />
+      <div class="fitxa max-w-[42ch]">
+        <p>
+          <strong>Tallerets</strong> és una associació del barri de Sants que
+          fa tallers de costura, ganxet, punt, dibuix i altres oficis creatius
+          per a totes les edats.
+        </p>
+        <p>
+          Però el taller, per a nosaltres, és més que aprendre una tècnica: és
+          un espai on les persones es troben, es cuiden i fan comunitat. Per
+          això portem el que sabem fer a projectes amb
+          <strong>dones grans</strong>, amb entitats que treballen contra les
+          <strong>violències masclistes</strong>, en
+          <strong>accessibilitat</strong> i en la
+          <strong>dignificació de l’ofici artesà</strong>.
+        </p>
+        <p>
+          Ho fem des de l’<strong>economia social i solidària</strong>: sense
+          afany de lucre, amb les sòcies al centre i en xarxa amb el barri.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESS -->
+  <section id="ess" class="page-padding mx-auto pt-24 md:pt-32">
+    <h2 class="titol-seccio max-w-[22ch] mx-auto">
+      Com apliquem l’economia social i solidària
+    </h2>
+    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+      {
+        principis.map((p) => (
+          <li class="punt p-6">
+            <h3 class="text-2xl font-[500] mb-3 text-red">✿ {p.titol}</h3>
+            <p class="text-lg leading-relaxed">{p.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Projectes -->
+  <section id="projectes" class="page-padding mx-auto pt-24 md:pt-32">
+    <h2 class="titol-seccio">
+      Projectes socials
+      <img width="48" height="48" class="w-12 inline" src="/icons/flor.svg" alt="" />
+    </h2>
+    <p class="text-xl md:text-2xl text-center max-w-[40ch] mx-auto -mt-4 mb-12">
+      Cada projecte té la seva fitxa: a qui s’adreça, què fem, amb qui i quins
+      resultats busquem.
+    </p>
+    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+      {projectes.map((p) => <ProjecteCard projecte={p} />)}
+    </ul>
+  </section>
+
+  <!-- Impacte -->
+  <section id="impacte" class="page-padding mx-auto pt-24 md:pt-32">
+    <h2 class="titol-seccio">L’impacte, en xifres</h2>
+    <ul class="grid gap-6 grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
+      {
+        impacte.map((i) => (
+          <li class="punt p-6 text-center">
+            <p class="text-5xl md:text-6xl font-[800] text-red">{i.xifra}</p>
+            <p class="mt-2 text-lg">{i.etiqueta}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="text-center mt-8 text-lg">
+      Més detall a la <a class="link underline decoration-red decoration-2 underline-offset-4" href="/transparencia">memòria i transparència</a>.
+    </p>
+  </section>
+
+  <!-- Xarxa -->
+  <section id="xarxa" class="page-padding mx-auto pt-24 md:pt-32">
+    <h2 class="titol-seccio">Fem xarxa amb</h2>
+    <ul class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+      {
+        xarxa.map((e) => (
+          <li class="border-2 border-dark rounded-lg px-4 py-2 text-lg md:text-xl font-[500]">
+            {e}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Col·labora -->
+  <section id="collabora" class="page-padding mx-auto pt-24 md:pt-32 pb-24 md:pb-32">
+    <div class="bg-dark text-soft rounded-lg p-8 md:p-16 max-w-5xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-[500] leading-tight mb-8">
+        Col·labora amb nosaltres
+      </h2>
+      <div class="grid gap-8 md:grid-cols-3 text-lg leading-relaxed">
+        <div>
+          <h3 class="text-2xl font-[500] mb-2">Administracions i fundacions</h3>
+          <p>Volem fer créixer els projectes que busquen finançament. Et podem enviar el dossier i les fitxes completes.</p>
+        </div>
+        <div>
+          <h3 class="text-2xl font-[500] mb-2">Entitats i serveis</h3>
+          <p>Dissenyem tallers i projectes conjunts adaptats al vostre grup i als vostres objectius.</p>
+        </div>
+        <div>
+          <h3 class="text-2xl font-[500] mb-2">Empreses</h3>
+          <p>Programes de responsabilitat social i tallers per a equips que reverteixen en el projecte.</p>
+        </div>
+      </div>
+      <a
+        href={`mailto:${entitat.email}?subject=Col·laboració amb Tallerets`}
+        class="c-button bg-red border-red text-soft hover:bg-soft mt-12"
+      >
+        Escriu-nos a {entitat.email}
+      </a>
+    </div>
+  </section>
+</Layout>

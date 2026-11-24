@@ -1,0 +1,49 @@
+---
+import { entitat } from '../data/entitat'
+const any = new Date().getFullYear()
+---
+
+<footer class="page-padding mx-auto bg-dark text-soft">
+  <section class="flex justify-between gap-8 px-4 pt-16 pb-12 flex-wrap">
+    <div class="flex flex-col justify-center max-w-xs">
+      <img
+        src="/icons/logo-s.png"
+        alt="Tallerets"
+        class="w-32"
+        width="260"
+        height="130"
+      />
+      <p class="mt-2">{entitat.lema}</p>
+      <p class="mt-2 opacity-70">© {any} {entitat.nom}</p>
+    </div>
+    <div>
+      <p class="font-bold opacity-70">L’ASSOCIACIÓ</p>
+      <ul>
+        <li><a class="hover:underline hover:text-soft" href="/#qui-som">Qui som</a></li>
+        <li><a class="hover:underline hover:text-soft" href="/#ess">Economia social i solidària</a></li>
+        <li><a class="hover:underline hover:text-soft" href="/#projectes">Projectes socials</a></li>
+        <li><a class="hover:underline hover:text-soft" href="/transparencia">Transparència</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold opacity-70">CONTACTE</p>
+      <ul>
+        <li><a class="hover:underline hover:text-soft" href={`mailto:${entitat.email}`}>{entitat.email}</a></li>
+        <li>{entitat.telefon}</li>
+        <li><a class="hover:underline hover:text-soft" href={entitat.instagram} target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold opacity-70">TALLERS</p>
+      <ul>
+        <li><a class="hover:underline hover:text-soft" href={entitat.web}>tallerets.com ☞</a></li>
+      </ul>
+    </div>
+  </section>
+</footer>
+
+<style>
+  li {
+    margin: 0.5rem 0 0;
+  }
+</style>

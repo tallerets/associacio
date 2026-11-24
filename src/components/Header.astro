@@ -1,0 +1,92 @@
+---
+const links = [
+  { url: '/#qui-som', text: 'qui som' },
+  { url: '/#projectes', text: 'projectes' },
+  { url: '/transparencia', text: 'transparència' },
+]
+const cta = { url: '/#collabora', text: 'Col·labora' }
+---
+
+<header class="page-padding z-10 flex items-center py-5 sm:py-7 w-full">
+  <a href="/" class="me-auto flex items-center gap-3">
+    <img
+      src="/icons/flor.svg"
+      alt="Tallerets associació"
+      class="w-14"
+      width="56"
+      height="56"
+    />
+    <span class="font-mono text-sm uppercase tracking-wide hidden sm:inline"
+      >associació</span
+    >
+  </a>
+
+  <nav>
+    <ul
+      class="nav hidden md:flex items-center gap-4 text-nowrap font-[500] text-xl md:text-2xl"
+    >
+      {links.map((l) => <li><a href={l.url}>{l.text}</a></li>)}
+      <li><a href={cta.url} class="destacat">{cta.text}</a></li>
+    </ul>
+  </nav>
+
+  <div class="md:hidden">
+    <input class="hidden" type="checkbox" id="nav-menu" />
+    <label for="nav-menu" id="open-button" class="cursor-pointer z-20">
+      <img src="/icons/menu.svg" width="48" height="48" alt="Obre el menú" />
+    </label>
+    <label
+      for="nav-menu"
+      id="close-button"
+      class="hidden cursor-pointer z-20 top-6 right-5"
+    >
+      <img src="/icons/close.svg" width="48" height="48" alt="Tanca el menú" />
+    </label>
+    <nav id="overlay" class="c-menu bg-dark">
+      <ul class="nav text-2xl flex flex-col gap-4 text-nowrap font-[500] w-full max-w-xs">
+        {links.map((l) => <li><a href={l.url}>{l.text}</a></li>)}
+        <li><a href={cta.url} class="destacat">{cta.text}</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Tanca el menú mòbil en clicar un enllaç intern
+  document.querySelectorAll('#overlay a').forEach((a) =>
+    a.addEventListener('click', () => {
+      const box = document.getElementById('nav-menu') as HTMLInputElement | null
+      if (box) box.checked = false
+    }),
+  )
+</script>
+
+<style>
+  .nav a {
+    @apply block border-2 bg-soft rounded-lg text-center px-5 pb-[0.4rem] pt-[0.4rem] hover:-rotate-3 hover:border-red hover:text-red transition-transform;
+  }
+  .nav a.destacat {
+    @apply bg-red text-soft border-red hover:bg-soft hover:text-red;
+  }
+  input[type='checkbox']:checked ~ #overlay {
+    display: flex;
+  }
+  input[type='checkbox']:checked ~ #close-button {
+    position: fixed;
+    display: block;
+  }
+  input[type='checkbox']:checked ~ #open-button {
+    display: none;
+  }
+  .c-menu {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    gap: 3rem;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    padding: 6rem 1.5rem 3rem;
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/BaseLayout.astro'
+import { entitat } from '../data/entitat'
+
+// Documents descarregables: posa els PDF a public/docs/ i omple l'enllaç.
+const documents = [
+  { titol: 'Estatuts de l’associació', url: '' },
+  { titol: 'Memòria d’activitat 2026', url: '' },
+  { titol: 'Comptes anuals 2026', url: '' },
+  { titol: 'Protocol de prevenció de violències masclistes i LGTBIAQ+fòbiques', url: '' },
+  { titol: 'Dossier institucional', url: '' },
+]
+
+// Subvencions i ajuts públics rebuts.
+const subvencions: { any: string; organisme: string; projecte: string; quantitat: string }[] = [
+  // { any: '2027', organisme: '...', projecte: '...', quantitat: '... €' },
+]
+---
+
+<Layout
+  title="Transparència · Tallerets, associació"
+  description="Dades de l'entitat, governança, documents i finançament públic de l'associació Tallerets."
+>
+  <section class="page-padding mx-auto pt-8 pb-24 max-w-4xl">
+    <h1 class="text-4xl md:text-6xl font-[500] md:leading-tight mb-6">
+      Transparència
+      <img width="48" height="48" class="w-12 inline" src="/icons/flor.svg" alt="" />
+    </h1>
+    <p class="text-2xl leading-snug mb-12">
+      Expliquem qui som, com ens organitzem i d’on vénen i on van els recursos.
+    </p>
+
+    <div class="fitxa">
+      <h2>Dades de l’entitat</h2>
+      <dl class="grid grid-cols-1 sm:grid-cols-[14rem_1fr] gap-x-6 gap-y-3 mb-6">
+        <dt class="font-[500]">Nom</dt><dd>{entitat.nomLegal}</dd>
+        <dt class="font-[500]">NIF</dt><dd>{entitat.nif}</dd>
+        <dt class="font-[500]">Registre d’Entitats</dt><dd>{entitat.registre}</dd>
+        <dt class="font-[500]">Data de constitució</dt><dd>{entitat.constitucio}</dd>
+        <dt class="font-[500]">Domicili social</dt><dd>{entitat.domicili}</dd>
+        <dt class="font-[500]">Contacte</dt><dd><a href={`mailto:${entitat.email}`}>{entitat.email}</a></dd>
+      </dl>
+
+      <h2>Finalitats</h2>
+      <p>[PENDENT: finalitats de l’associació segons els estatuts, en llenguatge planer.]</p>
+
+      <h2>Governança</h2>
+      <p>[PENDENT: composició de la junta directiva i com participen les sòcies en les decisions.]</p>
+
+      <h2>Documents</h2>
+      <ul>
+        {
+          documents.map((d) => (
+            <li>
+              {d.url ? <a href={d.url} target="_blank">{d.titol}</a> : <span>{d.titol} <span class="opacity-60">(properament)</span></span>}
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>Finançament públic rebut</h2>
+      {
+        subvencions.length ? (
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b-2 border-dashed border-red">
+                <th class="py-2 pr-4">Any</th><th class="py-2 pr-4">Organisme</th><th class="py-2 pr-4">Projecte</th><th class="py-2">Import</th>
+              </tr>
+            </thead>
+            <tbody>
+              {subvencions.map((s) => (
+                <tr class="border-b border-dark/20">
+                  <td class="py-2 pr-4">{s.any}</td><td class="py-2 pr-4">{s.organisme}</td><td class="py-2 pr-4">{s.projecte}</td><td class="py-2">{s.quantitat}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>Encara no hem rebut subvencions públiques. Quan en rebem, les publicarem aquí amb l’organisme, el projecte i l’import.</p>
+        )
+      }
+    </div>
+  </section>
+</Layout>
