@@ -6,19 +6,4 @@ interface Props {
 const { projecte } = Astro.props
 ---
 
-<li class="punt bg-soft hover:-rotate-1 hover:border-red transition-all">
-  <a href={`/projectes/${projecte.slug}`} class="flex flex-col h-full p-6 hover:text-dark">
-    <div class="flex flex-wrap gap-2 mb-4">
-      {
-        projecte.estats.map((e) => (
-          <span class={`etiqueta ${e === 'Busquem finançament' ? 'border-red text-red' : 'border-dark'}`}>
-            {e}
-          </span>
-        ))
-      }
-    </div>
-    <h3 class="text-2xl md:text-3xl font-[500] leading-tight mb-3">{projecte.titol}</h3>
-    <p class="text-lg leading-relaxed mb-6">{projecte.resum}</p>
-    <span class="mt-auto font-[500] text-red">Veure la fitxa ☞</span>
-  </a>
-</li>
+<li class="punt bg-soft p-6"><h3 class="text-2xl md:text-3xl font-[500] leading-tight mb-3">{projecte.titol}</h3><p class="text-lg leading-relaxed">{projecte.resum}</p></li>
