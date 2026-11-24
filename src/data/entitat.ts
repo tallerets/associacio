@@ -23,7 +23,7 @@ export const principis = [
   },
   {
     titol: 'Equitat i gènere',
-    text: 'Posem al centre les dones i el seu ofici: tallaristes, alumnes i artesanes. Treballem amb perspectiva feminista i prevenim les violències masclistes i LGTBIAQ+fòbiques.',
+    text: 'Posem al centre les dones i el seu ofici: talleristes, alumnes i artesanes. Treballem amb perspectiva feminista i prevenim les violències masclistes i LGTBIAQ+fòbiques.',
   },
   {
     titol: 'Sense afany de lucre',
