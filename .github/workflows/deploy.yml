@@ -1,0 +1,36 @@
+name: Publicar a cdmon
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instal·lar i construir
+        run: |
+          npm install
+          npm run build
+
+      # cdmon reserva /icons/: movem la carpeta a /icones/ (igual que a tallerets.com)
+      - name: Adaptar /icons/ per a cdmon
+        run: |
+          mv dist/icons dist/icones
+          grep -rlIF '/icons/' dist | xargs -r sed -i 's#/icons/#/icones/#g'
+
+      - name: Pujar per FTP a cdmon
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ./web/associacio/
