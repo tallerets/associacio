@@ -11,7 +11,7 @@ export const entitat = {
   telefon: '623 951 815',
   instagram: 'https://www.instagram.com/tallerets',
   web: 'https://www.tallerets.com',
-  lema: 'Dones, comunitat i ofici artesà com a eina de transformació social',
+  lema: 'Creació, comunitat i artesanies com a eina de transformació social',
 }
 
 // Principis de l'economia social i solidària i com els aplica Tallerets.
